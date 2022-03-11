@@ -19,7 +19,7 @@ router.get('/getItems', (req, res) => {
             res.status(404).json({msg: 'Item not found'});
         }
     }else{
-        res.json(items.find(items => items.deleted === false));
+        res.json(items.filter(items => items.deleted === false));
     }
 });
 
