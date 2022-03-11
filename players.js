@@ -1,58 +1,51 @@
-const express = require('express')
-const router = express.Router()
-const players = require('./data').players
+const express = require('express');
+const router = express.Router();
+const data = require('./data');
 
-//Get
-router.get('/getPlayers', async (req,res)=>{
-        res.status(200).json(players)
+
+//Player Creation - POST
+router.post('/', async (req,res)=>{
+    const{...player}=req.body;
+    data.players.push(player);
+    res.send('Player Created Successfully!');
 });
 
-
-//User - POST
-router.post('/', (req, res) => {
-    const {id} = req.body;
-    if(!id){
-        res.status(400).send('Missing fields');
-    }else{
-        const newModel_2d = {
-            id: models_2d.length + 1,
-            last_login:Date.now(),
-            password: id.password,
-            username: id.username,
-        };
-        models_2d.push(newModel_2d);
-        res.status(200).json(newModel_2d);
-    }
+//Get Players - GET
+router.get('/', async (req,res)=>{
+    res.send(JSON.stringify(data.players));
 });
 
-//Update by ID - PUT
+//Get Player by ID - GET
+router.get('/:id', async (req,res)=>{
+    const {id}=req.params;
+    const player = data.players.find(player=> player.id === id);
+    res.send(JSON.stringify(player));
+});
+
+//Update Player by ID - PUT
 router.put('/:id', async (req,res)=>{
     const {id}=req.params;
-    const{...user}=req.body;
-    const index = data.characters.findIndex(user=> user.id === id);
+    const{...player}=req.body;
+    const index = data.players.findIndex(player=> player.id === id);
     if(index!==-1){
-        data.characters[index] = user;
-        console.log(data.users);
-        res.send('Usuario Actualizado Exitosamente!');
+        data.players[index] = player;
+        res.send('Player Updated Successfully!');
     }else{
-        res.send('Este usuario no existe.');
+        res.send('This Player ID doesn`t exist.');
     }
 });
 
-//Delete by ID - DELETE
-router.delete('/user/:id', async (req,res)=>{
+//Delete Player by ID - DELETE
+router.delete('/:id', async (req,res)=>{
     const {id}=req.params;
-    const index = data.characters.findIndex(user=> user.id === id);
+    const index = data.players.findIndex(player=> player.id === id);
     if(index!==-1){
-        data.characters.splice(index,1);
-        console.log(data.characters);
-        res.send('Usuario Eliminado Exitosamente!');
+        data.players.splice(index,1);
+        res.send('Player Deleted Successfully!');
     }else{
-        res.send('Este usuario no existe.');
+        res.send('This Player ID doesn`t exist.');
     }
 });
-
-
 
 //Patch
 router.patch('/players', (req, res) => {
