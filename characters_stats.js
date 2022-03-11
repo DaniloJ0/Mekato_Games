@@ -6,6 +6,7 @@ const data = require('./data');
 //Character Stats Creation - POST
 router.post('/', async (req,res)=>{
     const{...characters_stat}=req.body;
+    console.log(characters_stat.attribute_1);
     data.characters_stats.push(characters_stat);
     res.send('Character Stats Created Successfully!');
 });

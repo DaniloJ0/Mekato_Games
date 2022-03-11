@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const data = require('./data')
-const models_3d = require(data).models_3d
+//const data = require('./data')
+const models_3d = require('./data').models_3d
 
 //Get
 router.get('/getModels_3d', (req, res) => {

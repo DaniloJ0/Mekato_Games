@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const data = require('./data')
-const mission_objectives = require(data).mission_objectives
+//const data = require('./data')
+const mission_objectives = require('./data').mission_objectives
 
 //Get
 router.get('/getMissionObjectives', (req, res) => {
