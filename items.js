@@ -18,7 +18,7 @@ router.get('/getItems', (req, res) => {
             res.status(404).json({msg: 'Item not found'});
         }
     }else{
-        res.json(items.find(items => items.deleted === false));
+        res.json(items.filter(items => items.deleted === false));
     }
 });
 
@@ -74,7 +74,7 @@ router.delete('/deleteItems', (req, res) => {
                 res.status(400).send('Item deleted');
             }else{
                 item.deleted = true;
-                res.status(200).json(item);
+                res.status(200);
             }
         }else{
             res.status(404).json({msg: 'Item not found'});
