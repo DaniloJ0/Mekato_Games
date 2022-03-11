@@ -1,7 +1,7 @@
 const express = require('express');
 const data = require('./data');
 const router = express.Router()
-
+const data = require('./data')
 const items = require(data).items;
 
 //Get
