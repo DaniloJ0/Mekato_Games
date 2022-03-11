@@ -1,8 +1,6 @@
 const data = {
     characters_stats: [],
-    characters: [{
-        "id":1,
-        "jose": 555}],
+    characters: [],
     images_2d: [],
     items: [],
     mission_objectives: [],
