@@ -18,23 +18,7 @@ router.get('/getMissionObjectives', (req, res) => {
     }   
 });
 
-//Post 
-router.post('/mission_objectives', (req, res) => {
-    const {name, description, count, mission} = req.body;
-    if(!name || !description || !count || !mission){
-        res.status(400).send('Missing fields');
-    }else{
-        const newMissionObjective = {
-            id: mission_objectives.length + 1,
-            name,
-            description,
-            count,
-            mission
-        }
-        mission_objectives.push(newMissionObjective);
-        res.status(200).json(newMissionObjective);
-    }
-});
+
 // Delete
 router.delete('/deleteMissionObjectives', (req, res) => {
     const id = req.query.id;
