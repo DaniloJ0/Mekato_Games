@@ -1,6 +1,8 @@
 const data = {
     characters_stats: [],
-    characters: [{"jose": 555}],
+    characters: [{
+        "id":1,
+        "jose": 555}],
     images_2d: [],
     items: [],
     mission_objectives: [],
@@ -12,14 +14,3 @@ const data = {
 
 module.exports = data
 
-// const data = {
-//     "characters_stats": [],
-//     "characters": [],
-//     "images_2d": [],
-//     "items": [],
-//     "mission_objectives": [],
-//     "mission" : [],
-//     "models_3d": [],
-//     "player_characters": [],
-//     "players": [],
-// }
